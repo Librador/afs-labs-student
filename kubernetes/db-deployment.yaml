@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: liturbe
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: registry.dev.afsmtddso.com/liturbe-harbor-project/app@sha256:0a947937c3e4e934d78cc11be871cee1a54282e307550a2e7cd0931317083648
+        name: db-deployment
+        image: registry.dev.afsmtddso.com/liturbe-harbor-project/db@sha256:8dacca5276288e3b8ff2d9b8ce7b49737181e5d0ed91b023c708817fa4750012
         ports:
-        - containerPort: 5000
+        - containerPort: 5432

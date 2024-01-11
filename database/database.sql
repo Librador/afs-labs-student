@@ -1,4 +1,4 @@
---
+--Testing the lab test 2
 -- PostgreSQL database dump
 --
 
